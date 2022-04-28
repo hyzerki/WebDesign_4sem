@@ -6,7 +6,7 @@ function SignUpEmailInput(props) {
 
     const emailInputHandler = function(e){
         setEmailValue(e.target.value);
-        props.getEmailValid(new RegExp("^([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+$").test(e.target.value));
+        props.getEmaсвilValid(new RegExp(/^([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+$/).test(e.target.value));
     }
 
     return (
@@ -51,10 +51,10 @@ function SignUpPasswordInput(props) {
 
     const validatePassword = function (e) {
         let res = 0;
-        let capReg = new RegExp("(?=.*[A-Z])");
-        let lowReg = new RegExp("(?=.*[a-z])");
-        let numReg = new RegExp("(?=.*[0-9])");
-        let specReg = new RegExp("(?=.*[!@#$%^&*])");
+        let capReg = new RegExp(/(?=.*[A-Z])/);
+        let lowReg = new RegExp(/(?=.*[a-z])/);
+        let numReg = new RegExp(/(?=.*[0-9])/);
+        let specReg = new RegExp(/(?=.*[!@#$%^&*])/);
         if (capReg.test(e)) {
             res += 20;
         }
@@ -100,8 +100,6 @@ function SignUpPasswordInput(props) {
 }
 
 function SignUpForm() {
-    const [canSubmit, setCanSubmit] = React.useState(false);
-
     const [passwordValid, setPasswordValid] = React.useState(false);
     const [emailValid, setEmailValid] = React.useState(false);
 
@@ -148,7 +146,7 @@ function SignUpForm() {
                 </div>
                 <div>
                     <input type="radio" name="gender" value="male" />Мужчина
-                    <input type="radio" name="gender" value="female" />Не Мужчина
+                    <input type="radio" name="gender" value="female" />Остальное
                 </div>
             </div>
             <div>
