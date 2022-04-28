@@ -1,0 +1,54 @@
+.calendarHead td,.calendarBody td{
+    text-align: center;
+    min-width: 2em;
+    height: 2em;
+}
+
+.calendarBody td{
+    border: 1px solid transparent;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.calendarBody td:hover{
+    border: 1px solid black;
+    border-radius: 100%;
+    transition: 0.5s;
+}
+
+.calendarArrow{
+    cursor: pointer;
+
+}
+
+.today{
+    background-color: black;
+    color: white;
+}
+
+.today:hover{
+    background: darkgray;
+    transition: 0.5s;
+}
+
+.actualMonth{
+    color: black;
+}
+
+.secondaryMonth{
+    color: gray
+}
+
+.pinnedMark{
+    position: absolute;
+    height: 6px;
+    width: 6px;
+    border-radius: 100%;
+    background-color: red;
+}
+
+.selectedDay{
+    background: #b9b9b9;
+    transition: 0.5s;
+}

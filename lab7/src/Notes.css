@@ -1,0 +1,28 @@
+
+.notesListView{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.note{
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.noteTitle{
+    font-weight: bold;
+}
+.noteText{
+    flex-grow: 10;
+}
+
+.noteDate{
+    text-align: right;
+}
