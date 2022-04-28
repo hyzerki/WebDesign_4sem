@@ -1,0 +1,22 @@
+.commentSection{
+    padding: 10px;
+}
+
+.comment{
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.commentTop{
+
+}
+
+.commentAvatar{
+    border-radius: 100%;
+    margin: 5px;
+}
+
+.commentName{
+    vertical-align: middle;
+    font-weight: bold;
+}
