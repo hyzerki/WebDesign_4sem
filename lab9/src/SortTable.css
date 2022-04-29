@@ -1,0 +1,7 @@
+ .sortTable td{
+    border: 1px solid black;
+ }
+
+ td .image{
+     height: 3.75em;
+ }
