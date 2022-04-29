@@ -1,0 +1,56 @@
+.outerInputDiv, .buttonWrapper{
+    display: flex;
+}
+
+.controlWrapper{
+    width: min-content;
+}
+
+.outerInputDiv{
+    width: min-content;
+    border: 1px solid black;
+
+}
+
+.selectFieldWrapper{
+    position: relative;
+}
+
+.buttonWrapper{
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    cursor:pointer;
+}
+
+.countryImage{
+    width: 1.5em;
+}
+
+.selectField{
+    right: 0px;
+    left: 0px;
+    top:0;
+    border: 1px solid black;
+    position:absolute;
+    background-color: white;
+    z-index: 3;
+}
+
+.option{
+    display: flex;
+    
+}
+
+.optionCountry{
+    flex-grow: 1;
+}
+
+.optionFlag{
+    width: 2em;
+    
+}
+
+.optionCode{
+    width: 3em;
+    text-align: end;
+}
