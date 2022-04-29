@@ -6,7 +6,8 @@ function SignUpEmailInput(props) {
 
     const emailInputHandler = function(e){
         setEmailValue(e.target.value);
-        props.getEmaсвilValid(new RegExp(/^([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+$/).test(e.target.value));
+        props.getEmailValid(new RegExp(/^([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+$/).test(e.target.value));
+        console.log(new RegExp(/^([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+$/).test(e.target.value));
     }
 
     return (
@@ -44,8 +45,10 @@ function SignUpPasswordInput(props) {
     const comparePasswords = function (str1, str2) {
         if (str1.length < 6 || str2.length < 6) {
             props.getPasswordMatch(false);
+            console.log(false);
         } else {
             props.getPasswordMatch(str1 === str2);
+            console.log(str1 === str2);
         }
     }
 
