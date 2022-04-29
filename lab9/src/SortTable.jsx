@@ -4,19 +4,19 @@ import './SortTable.css';
 
 function Catalog(props) {
     function sortByName() {
-        props.sortByName();
+        props.sortByName(true);
     }
 
     function sortByPrice() {
-        props.sortByPrice();
+        props.sortByPrice(true);
     }
 
     function sortByStock() {
-        props.sortByStock();
+        props.sortByStock(true);
     }
 
     function sortByDiscount() {
-        props.sortByDiscount();
+        props.sortByDiscount(true);
     }
 
     return (
@@ -29,7 +29,7 @@ function Catalog(props) {
             </div>
             <div>
                 {props.tableData.map(element => (
-                    <div style={{ display: "flex" }}>
+                    <div key={JSON.stringify(element)} style={{ display: "flex" }}>
                         <div>
                             {element.isNew ? <div>НОВИНКА!</div> : null}
                             <img height="200px" src={"images/" + element.image} alt={"images/" + element.image} />
@@ -56,40 +56,96 @@ function SortTable(props) {
 
     const [sortOrder, setSortOrder] = React.useState(true);
 
-    function sortByName() {
-        let temp = JSON.parse(JSON.stringify(tableData));
-        temp.sort((a, b) => a.name.localeCompare(b.name));
-        if (sortOrder)
-            temp.reverse();
-        setTableData(temp);
-        setSortOrder(!sortOrder);
+    function sortByName(cat) {
+        if(cat===true){
+            let newies = JSON.parse(JSON.stringify(tableData.filter(n=>n.isNew===true)));
+            let temp = JSON.parse(JSON.stringify(tableData.filter(n=>n.isNew===false)));
+            newies.sort((a, b) => a.name.localeCompare(b.name));
+            temp.sort((a, b) => a.name.localeCompare(b.name));
+            if (sortOrder){
+                newies.reverse()
+                temp.reverse();
+            }
+            temp=[...newies,...temp];
+            setTableData(temp);
+            setSortOrder(!sortOrder);
+        }else{
+            let temp = JSON.parse(JSON.stringify(tableData));
+            temp.sort((a, b) => a.name.localeCompare(b.name));
+            if (sortOrder)
+                temp.reverse();
+            setTableData(temp);
+            setSortOrder(!sortOrder);
+        }
     }
 
-    function sortByPrice() {
-        let temp = JSON.parse(JSON.stringify(tableData));
-        temp.sort((a, b) => a.price - b.price);
-        if (sortOrder)
-            temp.reverse();
-        setTableData(temp);
-        setSortOrder(!sortOrder);
+    function sortByPrice(cat) {
+        if(cat===true){
+            let newies = JSON.parse(JSON.stringify(tableData.filter(n=>n.isNew===true)));
+            let temp = JSON.parse(JSON.stringify(tableData.filter(n=>n.isNew===false)));
+            newies.sort((a, b) => a.price - b.price);
+            temp.sort((a, b) => a.price - b.price);
+            if (sortOrder){
+                newies.reverse()
+                temp.reverse();
+            }
+            temp=[...newies,...temp];
+            setTableData(temp);
+            setSortOrder(!sortOrder);
+        }else{
+            let temp = JSON.parse(JSON.stringify(tableData));
+            temp.sort((a, b) => a.price - b.price);
+            if (sortOrder)
+                temp.reverse();
+            setTableData(temp);
+            setSortOrder(!sortOrder);
+        }
     }
 
-    function sortByStock() {
-        let temp = JSON.parse(JSON.stringify(tableData));
-        temp.sort((a, b) => a.stock - b.stock);
-        if (sortOrder)
-            temp.reverse();
-        setTableData(temp);
-        setSortOrder(!sortOrder);
+    function sortByStock(cat) {
+        if(cat===true){
+            let newies = JSON.parse(JSON.stringify(tableData.filter(n=>n.isNew===true)));
+            let temp = JSON.parse(JSON.stringify(tableData.filter(n=>n.isNew===false)));
+            newies.sort((a, b) => a.stock - b.stock);
+            temp.sort((a, b) => a.stock - b.stock);
+            if (sortOrder){
+                newies.reverse()
+                temp.reverse();
+            }
+            temp=[...newies,...temp];
+            setTableData(temp);
+            setSortOrder(!sortOrder);
+        }else{
+            let temp = JSON.parse(JSON.stringify(tableData));
+            temp.sort((a, b) => a.stock - b.stock);
+            if (sortOrder)
+                temp.reverse();
+            setTableData(temp);
+            setSortOrder(!sortOrder);
+        }
     }
 
-    function sortByDiscount() {
-        let temp = JSON.parse(JSON.stringify(tableData));
-        temp.sort((a, b) => a.discount - b.discount);
-        if (sortOrder)
-            temp.reverse();
-        setTableData(temp);
-        setSortOrder(!sortOrder);
+    function sortByDiscount(cat) {
+        if(cat ===true){
+            let newies = JSON.parse(JSON.stringify(tableData.filter(n=>n.isNew===true)));
+            let temp = JSON.parse(JSON.stringify(tableData.filter(n=>n.isNew===false)));
+            newies.sort((a, b) => a.discount - b.discount);
+            temp.sort((a, b) => a.discount - b.discount);
+            if (sortOrder){
+                newies.reverse()
+                temp.reverse();
+            }
+            temp=[...newies,...temp];
+            setTableData(temp);
+            setSortOrder(!sortOrder);
+        }else{
+            let temp = JSON.parse(JSON.stringify(tableData));
+            temp.sort((a, b) => a.discount - b.discount);
+            if (sortOrder)
+                temp.reverse();
+            setTableData(temp);
+            setSortOrder(!sortOrder);
+        }
     }
 
 
