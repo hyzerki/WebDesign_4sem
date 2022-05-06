@@ -44,12 +44,12 @@ class PhoneInput extends React.Component {
         this.countryClick = this.countryClick.bind(this);
     }
 
-    countryList = [{ country: "Беларусь", code: "+375", pattern: " (XX) XXX-XX-XX" },
-    { country: "Россия", code: "+7", pattern: " (XXX) XXX-XX-XX" },
-    { country: "Украина", code: "+380", pattern: " (XX) XXX-XX-XX" },
-    { country: "Польша", code: "+48", pattern: " XXX-XXX-XXX" },
-    { country: "Литва", code: "+370", pattern: " (XX) XXX-XX-XX" },
-    { country: "Латвия", code: "+371", pattern: " XXXX-XXXX" }]
+    countryList = [{ country: "Беларусь", code: "+375", pattern: " (XX) XXX-XX-XX", operators: ["МТС", "A1", "life:)"] },
+    { country: "Россия", code: "+7", pattern: " (XXX) XXX-XX-XX", operators: ["Билайн", "Мегафон", "МТС", "Tele2"] },
+    { country: "Украина", code: "+380", pattern: " (XX) XXX-XX-XX", operators: ["Lifecell", "Vodafone", "Київстар"] },
+    { country: "Польша", code: "+48", pattern: " XXX-XXX-XXX", operators: ["Orange", "Play", "Plus", "T-mobile"] },
+    { country: "Литва", code: "+370", pattern: " (XX) XXX-XX-XX", operators: ["Telia", "Bite", "Tele2"] },
+    { country: "Латвия", code: "+371", pattern: " XXXX-XXXX", operators: ["LMT", "Tele2", "Bite"] }]
 
     countrySelect(e) {
         this.setState((prevState, props) => ({
@@ -102,16 +102,26 @@ class PhoneInput extends React.Component {
 
     render() {
         return (
-            <div className="controlWrapper">
-                <div className="outerInputDiv">
-                    <div className="buttonWrapper" onClick={this.onArrowClick}>
-                        <div className="arrow">{this.state.countrySelectionShown ? "▲" : "▼"}</div>
-                        {!!this.state.selectedCountry ? <img className="countryImage" height="20px" src={"img/" + this.state.selectedCountry.country + ".png"} alt={"img/" + this.state.selectedCountry.country + ".png"} /> : <div className="countryImage"></div>}
+            <React.Fragment>
+                <div className="controlWrapper">
+                    <div className="outerInputDiv">
+                        <div className="buttonWrapper" onClick={this.onArrowClick}>
+                            <div className="arrow">{this.state.countrySelectionShown ? "▲" : "▼"}</div>
+                            {!!this.state.selectedCountry ? <img className="countryImage" height="20px" src={"img/" + this.state.selectedCountry.country + ".png"} alt={"img/" + this.state.selectedCountry.country + ".png"} /> : <div className="countryImage"></div>}
+                        </div>
+                        <input type="text" onInput={this.onPhoneInputChanged} value={this.state.inputValue} />
                     </div>
-                    <input type="text" onInput={this.onPhoneInputChanged} value={this.state.inputValue} />
+                    <CountrySelect countryList={this.countryList} shown={this.state.countrySelectionShown} onSelect={this.countryClick} />
                 </div>
-                <CountrySelect countryList={this.countryList} shown={this.state.countrySelectionShown} onSelect={this.countryClick} />
-            </div>
+                <div>{
+                    !!this.state.selectedCountry ? <select>
+                        {this.state.selectedCountry.operators.map((elem) => {
+                            return <option>{elem}</option>
+                        })}
+                    </select> : null
+                }
+                </div>
+            </React.Fragment>
         );
     }
 }
